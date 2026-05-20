@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: finwallet-api
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/finwallet
+    username: finwallet
+    password: finwallet
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    open-in-view: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+server:
+  port: 8080
