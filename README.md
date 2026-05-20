@@ -36,3 +36,7 @@ under construction
 
 ## Live Demo
 under construction
+
+## License
+
+MIT License — feel free to use this project as a reference.
