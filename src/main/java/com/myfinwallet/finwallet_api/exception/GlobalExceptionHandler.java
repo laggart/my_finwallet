@@ -49,6 +49,17 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, Object>> handleGeneral(Exception ex) {
         return buildResponse(HttpStatus.INTERNAL_SERVER_ERROR, "INTERNAL_ERROR", "Error interno del servidor");
     }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Map<String, Object>> handleIllegalArgument(IllegalArgumentException ex) {
+        return buildResponse(HttpStatus.CONFLICT, "CONFLICT", ex.getMessage());
+    }
+
+    @ExceptionHandler(org.springframework.security.authentication.BadCredentialsException.class)
+    public ResponseEntity<Map<String, Object>> handleBadCredentials(org.springframework.security.authentication.BadCredentialsException ex) {
+        return buildResponse(HttpStatus.UNAUTHORIZED, "UNAUTHORIZED", "Credenciales incorrectas");
+    }
+        
     
     private ResponseEntity<Map<String, Object>> buildResponse(HttpStatusCode status, String error, String message) {
         Map<String, Object> body =  new HashMap<>();
