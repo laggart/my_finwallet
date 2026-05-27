@@ -69,7 +69,7 @@ public class TransactionService {
                 .completedAt(LocalDateTime.now())
                 .build();
 
-        transactionRepository.save(transaction);
+        transaction = transactionRepository.save(transaction);
         transactionRepository.flush();
         transaction = transactionRepository.findById(transaction.getId())
              .orElseThrow(() -> new ResourceNotFoundException("Transacción no encontrada"));

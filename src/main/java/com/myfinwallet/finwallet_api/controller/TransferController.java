@@ -38,12 +38,12 @@ public class TransferController {
     @GetMapping("/accounts/me/transactions")
     public ResponseEntity<Page<TransactionResponse>> getHistory(
             @AuthenticationPrincipal UserDetails userDetails,
-            @RequestParam(defaultValue = "#{T(java.time.LocalDateTime).now().minusMonths(1)}") 
-            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime from,
-            @RequestParam(defaultValue = "#{T(java.time.LocalDateTime).now()}") 
-            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime to,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime from, 
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime to,
             @PageableDefault(size = 10) Pageable pageable) {
-        return ResponseEntity.ok(transactionService.getHistory(userDetails.getUsername(), from, to, pageable));
+        LocalDateTime effectiveFrom = from != null ? from : LocalDateTime.now().minusMonths(1);
+        LocalDateTime effectiveTo = to != null ? to : LocalDateTime.now();
+        return ResponseEntity.ok(transactionService.getHistory(userDetails.getUsername(), effectiveFrom, effectiveTo, pageable));
     }
 
     
