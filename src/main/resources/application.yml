@@ -3,9 +3,9 @@ spring:
     name: finwallet-api
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/finwallet
-    username: finwallet
-    password: finwallet
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/finwallet}
+    username: ${DB_USERNAME:finwallet}
+    password: ${DB_PASSWORD:finwallet}
   jpa:
     hibernate:
       ddl-auto: validate
