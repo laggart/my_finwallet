@@ -3,6 +3,7 @@ target/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+fintech-api-portfolio-guide.md
 
 ### STS ###
 .apt_generated
