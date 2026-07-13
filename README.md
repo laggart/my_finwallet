@@ -4,7 +4,7 @@ A RESTful backend API simulating a digital wallet and P2P transfer system,
 built with Java 21 and Spring Boot 3. Designed as a portfolio project showcasing
 real-world fintech backend patterns.
 
-🚀 **Live demo**: [https://myfinwallet-production.up.railway.app/swagger-ui.html](https://myfinwallet-production.up.railway.app/swagger-ui.html)
+🚀 **Live demo**: [https://my-finwallet.onrender.com/swagger-ui.html](https://my-finwallet.onrender.com/swagger-ui.html)
 
 ---
 
@@ -18,7 +18,7 @@ real-world fintech backend patterns.
 - Full API documentation with Swagger UI
 - Database migrations managed by Flyway
 - Dockerized with Docker Compose
-- Dockerized and deployed on Railway
+- Deployed on Render
 
 ## Tech Stack
 | Layer | Technology |
@@ -30,7 +30,7 @@ real-world fintech backend patterns.
 | Migrations | Flyway |
 | Documentation | SpringDoc OpenAPI (Swagger UI) |
 | Containerization | Docker |
-| Deployment | Railway |
+| Deployment | Render |
 | Build tool | Maven |
 
 ## Architecture
@@ -77,7 +77,7 @@ src/
 |--------|----------|------|-------------|
 | POST | `/` | Yes | Send a transfer to another account |
 
-Full interactive documentation available at the [Swagger UI](https://myfinwallet-production.up.railway.app/swagger-ui.html).
+Full interactive documentation available at the [Swagger UI](https://my-finwallet.onrender.com/swagger-ui.html).
 
 ---
 
@@ -134,14 +134,14 @@ docker compose up -d
 
 **Register a user**
 ```bash
-curl -X POST https://myfinwallet-production.up.railway.app/api/v1/auth/register \
+curl -X POST https://my-finwallet.onrender.com/api/v1/auth/register \
   -H "Content-Type: application/json" \
   -d '{"email":"user@example.com","password":"SecurePass123!","firstName":"Juan","lastName":"García"}'
 ```
 
 **Make a transfer**
 ```bash
-curl -X POST https://myfinwallet-production.up.railway.app/api/v1/transfers \
+curl -X POST https://my-finwallet.onrender.com/api/v1/transfers \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"receiverAccountNumber":"FW-0000000001","amount":50.00,"description":"Dinner"}'
